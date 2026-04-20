@@ -1,0 +1,8 @@
+### GET ALL ITEMS
+GET http://127.0.0.1:5000/items HTTP/1.1
+
+###Get single item
+GET http://127.0.0.1:5000/items/1 HTTP/1.1
+
+###
+GET http://127.0.0.1:5000/docs HTTP/1.1
