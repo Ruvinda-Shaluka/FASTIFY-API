@@ -39,9 +39,29 @@ const deleteItem = (req, reply) => {
   reply.send({ message: `Item ${id} has been removed` });
 };
 
+const updateItem = (req, reply) => {
+  const { id } = req.params;
+  const { name } = req.body;
+
+  // 1. Find the specific item in the array
+  const item = items.find((item) => item.id === id);
+
+  // 2. If the item doesn't exist, return a 404
+  if (!item) {
+    return reply.code(404).send({ message: "Item not found" });
+  }
+
+  // 3. Mutate the item (Update the name)
+  item.name = name;
+
+  // 4. Send the updated item back
+  reply.send(item);
+};
+
 module.exports = {
     getItem,
     getItems,
     addItem,
-    deleteItem
+    deleteItem,
+    updateItem
 }

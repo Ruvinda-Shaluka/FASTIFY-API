@@ -3,6 +3,7 @@ const {
   getItems,
   addItem,
   deleteItem,
+  updateItem,
 } = require("../controllers/itemController");
 
 const Item = {
@@ -68,6 +69,16 @@ const deleteItemOpts = {
   handler: deleteItem,
 };
 
+const updateItemOpts = {
+  schema: {
+    response: {
+      200: Item,
+    },
+  },
+  // HANDLER IS DEFINED HERE
+  handler: updateItem,
+};
+
 async function itemsRoutes(fastify, options) {
   // CORRECT: Only pass the options object.
   // Fastify will pull the handler from inside getItemsOpts.
@@ -81,6 +92,9 @@ async function itemsRoutes(fastify, options) {
 
   // delete item
   fastify.delete("/:id", deleteItemOpts);
+
+  // update item
+  fastify.put('/:id', updateItemOpts)
 }
 
 module.exports = itemsRoutes;
