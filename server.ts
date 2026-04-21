@@ -1,10 +1,12 @@
 import Fastify from 'fastify';
 import itemsRoutes from './routes/items.js';
+import customerRoutes from './routes/customer.js'
 
 const fastify = Fastify({ logger: true });
 const PORT = 5000;
 
 fastify.register(itemsRoutes, { prefix: "/items" });
+fastify.register(customerRoutes, {prefix: "/customers"})
 
 fastify.ready((err) => {
   if (err) throw err;

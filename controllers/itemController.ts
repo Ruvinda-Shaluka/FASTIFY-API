@@ -1,6 +1,6 @@
 import type { FastifyRequest, FastifyReply } from "fastify";
 import { v4 as uuidv4 } from "uuid";
-import items, {type Item } from "../items.js";
+import items, {type Item } from "../db/items.js";
 
 // ADDED 'export' HERE: We need to share these types with the routes file
 export type ItemParams = { id: string };
