@@ -1,11 +1,14 @@
-const fastify = require("fastify")({ logger: true });
+import Fastify from 'fastify';
+import itemsRoutes from './routes/items.js';
 
+const fastify = Fastify({ logger: true });
 const PORT = 5000;
 
-fastify.register(require("./routes/items"), { prefix: "/items" });
+fastify.register(itemsRoutes, { prefix: "/items" });
+
 fastify.ready((err) => {
   if (err) throw err;
-  console.log(fastify.printRoutes()); // This will print every valid URL your server knows!
+  console.log(fastify.printRoutes());
 });
 
 const start = async () => {
